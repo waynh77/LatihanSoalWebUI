@@ -7,6 +7,9 @@
 <h3>Pelanggan</h3>
 <div class="content">
     <div class="card">
+            <div class="d-flex justify-content-left">
+                <a href="#" class="btn btn-primary btn-labeled btn-labeled-right" id="BtnCreate"><b><i class="icon-plus2"></i></b>Add New</a>
+            </div><br />
         <table class="table datatable-scroll-y" role="grid" id="myTable" width="100%">
             <thead style="background: #0098D7; color: #ffffff; ">
                 <tr>
@@ -15,12 +18,17 @@
                     <th>Nama</th>
                     <th>Alamat</th>
                     <th>NoTelp</th>
-                    @*<th>Action</th>*@
+                    <th>Action</th>
                 </tr>
             </thead>
         </table>
     </div>
 </div>
+<div id="DetailWindow"></div>
+<div id="CreateWindow"></div>
+<div id="EditWindow"></div>
+<div id="DeleteWindow"></div>
+
 
 @section Scripts
 {
@@ -30,12 +38,20 @@
 $(document).ready(function() {
     
  $('#myTable').DataTable( {
-        processing: true,
-        serverSide: true,
+        processing: true, // for show progress bar
+        serverSide: false, // for process server side  
+        filter: true, // this is for disable filter (search box)  
+        orderMulti: false, // for disable multiple column at once 
+        autoWidth: true,
+        pageLength: 10,
+        stateSave: false,
+        scrollX: true,
+        lengthMenu: [[10, 25, 50, 100], [10, 25, 50, 100]],
         ajax:{
             url:"https://localhost:7038/api/Pelanggan",
             type:'GET',
-            dataSrc:""
+            datatype: "json",
+            dataSrc:"",
         }, 
         columnDefs: [
             {
@@ -48,12 +64,22 @@ $(document).ready(function() {
                 "visible": false,
             }
         ],
+        order: [[1, 'desc']],
         columns: [
             { data: null },
             { "data": "id" },
             { "data": "nama" },
             { "data": "alamat" },
-            { "data": "noTelp" }
+            { "data": "noTelp" },
+            {
+                "render": function (data, type, full, meta) {
+                    var result = "<a href=\"javascript:;\" onClick='TLE.LecTypeDetailPopUp(event," + full.Id + ")' class='text-primary-600'>Detail</a>";
+                        result = result + "|<a href=\"javascript:;\" onClick='TLE.LecTypeDetailPopUp(event," + full.Id + ")' class='text-primary-600'>Edit</a>";
+                        result = result + "|<a href=\"javascript:;\" onClick='TLE.LecTypeDetailPopUp(event," + full.Id + ")' class='text-primary-600'>Delete</a>";
+
+                    return result;
+                }
+            }
         ],
         rowCallback: function (row, data, index) {
             var start = this.api().page.info().start;
