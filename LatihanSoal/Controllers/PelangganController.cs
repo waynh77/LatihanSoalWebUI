@@ -35,7 +35,7 @@ namespace LatihanSoal.Controllers
 
             using (var httpClient = new HttpClient())
             {
-                var endpoint = String.Format("{0}/{1}", "https://localhost:7038/", "api/Pelanggan/Create");
+                var endpoint = String.Format("{0}/{1}", "https://localhost:7038", "api/Pelanggan/save");
                 StringContent content = new StringContent(JsonConvert.SerializeObject(Model), Encoding.UTF8, "application/json");
                 httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("bearer {0}", ""));
 

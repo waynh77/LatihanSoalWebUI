@@ -56,7 +56,7 @@
             formData.append("Alamat", Alamat)
             formData.append("NoTelp", NoTelp)
 
-            custom.showLoading();
+            //custom.showLoading();
 
             $.ajax({
                 url: url,
@@ -67,15 +67,17 @@
                 contentType: false,
                 success: function (result) {
                     if (result.isSucceed) {
-                        Pelanggan.table.ajax.reload();
                         $("#CreateWindow").data("kendoWindow").close();
-                        custom.hideLoading();
+                        //custom.hideLoading();
                         swal("Success", result.message, {
                             icon: "success"
+                        }).then(function() {
+                            window.location.reload();
                         });
+                        //Pelanggan.table.ajax.reload();
                     }
                     else {
-                        custom.hideLoading();
+                        //custom.hideLoading();
                         swal("Something Wrong", result.message, {
                             icon: "error"
                         });
