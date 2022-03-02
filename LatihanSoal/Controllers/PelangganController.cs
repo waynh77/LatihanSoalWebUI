@@ -16,9 +16,11 @@ namespace LatihanSoal.Controllers
         }
 
         // GET: Pelanggan/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int Id)
         {
-            return View();
+            Pelanggan pelanggan = new Pelanggan { Id = Id };
+            return PartialView("Detail", pelanggan);
+
         }
 
         // GET: Pelanggan/Create
@@ -55,7 +57,8 @@ namespace LatihanSoal.Controllers
         // GET: Pelanggan/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Pelanggan pelanggan = new Pelanggan { Id = id };
+            return PartialView("Edit", pelanggan);
         }
 
         // POST: Pelanggan/Edit/5

@@ -24,6 +24,8 @@
             {
                 "targets": [1],
                 "visible": false,
+                "searchable": true,
+                "orderable": false
             }
         ],
         order: [[1, 'desc']],
@@ -35,9 +37,9 @@
             { "data": "noTelp" },
             {
                 "render": function (data, type, full, meta) {
-                    var result = "<a href=\"javascript:;\" onClick='DetailPopUp(event," + full.Id + ")' class='btn btn-secondary'>Detail</a>";
-                    result = result + " <a href=\"javascript:;\" onClick='EditPopUp(event," + full.Id + ")' class='btn btn-warning'>Edit</a>";
-                    result = result + " <a href=\"javascript:;\" onClick='DeletePopUp(event," + full.Id + ")' class='btn btn-danger'>Delete</a>";
+                    var result = "<a href=\"javascript:;\" onClick='Pelanggan.DetailPopUp(event," + full.id + ")' class='btn btn-secondary'>Detail</a>";
+                    result = result + " <a href=\"javascript:;\" onClick='Pelanggan.EditPopUp(event," + full.id + ")' class='btn btn-warning'>Edit</a>";
+                    result = result + " <a href=\"javascript:;\" onClick='Pelanggan.DeletePopUp(event," + full.id + ")' class='btn btn-danger'>Delete</a>";
 
                     return result;
                 }
@@ -94,6 +96,32 @@
 
     Pelanggan.closeWindow = function () {
         $("#CreateWindow").data("kendoWindow").close();
+    };
+
+    Pelanggan.DetailPopUp = function (e, Id) {
+        e.preventDefault();
+        $(".k-window-title").html("Detail Pelanggan");
+        $("#DetailWindow")
+            .data("kendoWindow")
+            .refresh({
+                url: "/Pelanggan/Details/",
+                data: { Id: Id }
+            })
+            .center()
+            .open();
+    };
+
+    Pelanggan.EditPopUp = function (e, Id) {
+        e.preventDefault();
+        $(".k-window-title").html("Edit Pelanggan");
+        $("#EditWindow")
+            .data("kendoWindow")
+            .refresh({
+                url: "/Pelanggan/Edit/",
+                data: { Id: Id }
+            })
+            .center()
+            .open();
     };
 
     return Pelanggan

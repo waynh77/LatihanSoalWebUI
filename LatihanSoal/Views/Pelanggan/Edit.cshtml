@@ -1,5 +1,98 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model LatihanSoal.Models.Pelanggan
+
+<div class="card">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FormPelanggan", name = "FormPelanggan", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.AntiForgeryToken()
+    <div class="content">
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Nama Pelanggan</label>
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.Nama, new { @class = "form-control", id = "Nama", data_val = "true", placeholder = "Nama Pelanggan" })
+                @Html.ValidationMessageFor(m => m.Nama)
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Alamat</label>
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.Alamat, new { @class = "form-control", id = "Alamat", data_val = "true", placeholder = "Alamat" })
+                @Html.ValidationMessageFor(m => m.Alamat)
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Nomor Telepon</label>
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.NoTelp, new { @class = "form-control", id = "NoTelp", data_val = "true", placeholder = "Nomor Telepon" })
+                @Html.ValidationMessageFor(m => m.NoTelp)
+            </div>
+        </div>
+
+        <div class="card-footer text-right">
+            <button type="submit" class="btn btn-primary btn-labeled btn-labeled-right" id="BtnSubmit"><b><i class="icon-paperplane"></i></b>Submit</button>
+            <a href="#" class="btn btn-danger" id="BtnCancel">Cancel</a>
+        </div>
+    </div>
 }
+</div>
+
+
+
+<script>
+    var Pelanggan = (function (Pelanggan) {
+
+        Pelanggan.closeWindow = function () {
+            $("#EditWindow").data("kendoWindow").close();
+        };
+
+        Pelanggan.submit = function (e) {
+            e.preventDefault();
+            var url = "@Url.Action("Save")";
+            var formData = new FormData(this);
+
+            //custom.showLoading();
+
+            $.ajax({
+                url: url,
+                enctype: 'multipart/form-data',
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    if (result.isSucceed) {
+                        $("#EditWindow").data("kendoWindow").close();
+                        //custom.hideLoading();
+                        swal("Success", result.message, {
+                            icon: "success"
+                        }).then(function() {
+                            window.location.reload();
+                        });
+                        //Pelanggan.table.ajax.reload();
+                    }
+                    else {
+                        //custom.hideLoading();
+                        swal("Something Wrong", result.message, {
+                            icon: "error"
+                        });
+                    }
+                }
+            });
+        };
+
+        return Pelanggan;
+    })(Pelanggan || {});
+
+    $(function () {
+        $("#FormPelanggan").submit(Pelanggan.submit);
+        $("#BtnCancel").click(Pelanggan.closeWindow);
+
+        $.getJSON('https://localhost:7038/api/Pelanggan/'+@Model.Id, function(data) {
+            
+            document.getElementById("Nama").value = data.nama;
+            document.getElementById("Alamat").value = data.alamat;
+            document.getElementById("NoTelp").value = data.noTelp;
+        });
+
+    });
+</script>
