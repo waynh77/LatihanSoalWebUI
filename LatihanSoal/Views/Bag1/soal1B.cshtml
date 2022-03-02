@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+    <h3>Soal Bagian A - 2 (Sort Berdasarkan Posisi)</h3>
+  <label for="finput">Masukan Kalimat(max 100 char) :</label>
+  <input type="text" id="finput" name="finput"><br><br>
+    <button onclick="Proses()" class="btn btn-primary">Proses Bag A-2</button>
+    <br /><br />
+  <label id="foutput"></label>
+
+
+<script>
+        function Proses(sel) {
+          var input = document.getElementById("finput").value;
+          var output="";
+          var tempchar="";
+          var tempchar2="";
+          var output2="";
+          if(input.length >= 1 && input.length <=100){
+              output=input.replace(/ /g,'');
+              arr=output;
+              for(i=0;i<output.length;i++){
+                  tempchar=output[i];
+                  tempchar2="";
+                  for(j=0;j<arr.length;j++){
+                      if(tempchar==arr[j]){
+                          tempchar2+=arr[j];
+                      }
+                  }
+                  arr=arr.replaceAll(tempchar,'');
+                  output2+=tempchar2;
+              }
+              document.getElementById("foutput").innerHTML="Hasil = "+ output2;
+          }else{
+              document.getElementById("foutput").innerHTML="Hasil = Input kurang dari 1 atau lebih dari 100 karakter";
+          }
+        }   
+</script>

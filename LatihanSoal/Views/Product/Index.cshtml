@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewData["Title"] = "Product";
+}
+
+
+<h3>Product</h3>
+<div class="content">
+    <div class="card">
+        <table class="table datatable-scroll-y" role="grid" id="myTable" width="100%">
+            <thead style="background: #0098D7; color: #ffffff; ">
+                <tr>
+                    <th>No</th>
+                    <th>Id</th>
+                    <th>Nama</th>
+                    <th>Harga</th>
+                    <th>Deskripsi</th>
+                    @*<th>Action</th>*@
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Scripts
+{
+<script async='async' type='text/javascript'>
+
+             
+$(document).ready(function() {
+    
+ $('#myTable').DataTable( {
+        processing: true,
+        serverSide: true,
+        ajax:{
+            url:"https://localhost:7038/api/Product",
+            type:'GET',
+            dataSrc:""
+        }, 
+        columnDefs: [
+            {
+                "targets": [0],
+                "searchable": false,
+                "orderable": false
+            },
+            {
+                "targets": [1],
+                "visible": false,
+            }
+        ],
+        columns: [
+            { data: null },
+            { "data": "id" },
+            { "data": "nama" },
+            { "data": "harga" },
+            { "data": "deskripsi" }
+        ],
+        rowCallback: function (row, data, index) {
+            var start = this.api().page.info().start;
+
+            $('td:eq(0)', row).html(start + index + 1);
+        }
+
+    } );
+
+} );
+
+</script>
+}

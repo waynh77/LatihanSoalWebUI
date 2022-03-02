@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h3>Soal Bagian A - 3 (Kamus Panda)</h3>
+  <label for="finput">Masukan Kata(max 1 kata dan max 200 char) :</label>
+  <input type="text" id="finput" name="finput"><br><br>
+    <button onclick="Proses()" class="btn btn-danger">Proses Bag A-3</button>
+    <br /><br />
+  <label id="foutput"></label>
+
+
+<script>
+        function Proses(sel) {
+          var input = document.getElementById("finput").value;
+          var jmlkata=input.split(" ");
+          var output=0;
+          var jmlchar=0;
+          if(input.length >= 1 && input.length <=200 && jmlkata.length==1){
+              input=input.replace(/[A-Z0-9]/g,'');
+              input=input.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
+              arr=input;
+              for(i=0;i<input.length;i++){
+                  tempchar=input[i];
+                  output=0;
+                  for(j=0;j<arr.length;j++){
+                      output=1;
+                  }
+                  arr=arr.replaceAll(tempchar,'');
+                  jmlchar+=output;
+              }
+              document.getElementById("foutput").innerHTML="Hasil = "+ jmlchar;
+          }else{
+              if(input.length<1){
+              document.getElementById("foutput").innerHTML="Hasil = Input kurang dari 1";
+
+              }else if(input.length>200){
+              document.getElementById("foutput").innerHTML="Hasil = Input lebih dari 200 karakter";
+
+              }else{
+              document.getElementById("foutput").innerHTML="Hasil = Input jumlah kata lebih dari satu kata";
+
+              }
+          }
+        }   
+</script>

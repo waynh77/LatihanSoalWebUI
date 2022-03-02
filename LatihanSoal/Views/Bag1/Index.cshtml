@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+    <h3>Soal Bagian A - 1 (1 2 Hop!)</h3>
+  <label for="finput">Masukan Jumlah (min 1 max 20) :</label>
+  <input type="number" id="finput" name="finput"><br><br>
+    <button onclick="Proses()" class="btn btn-success">Proses Bag A-1</button>
+    <br /><br />
+  <label id="foutput"></label>
+
+
+<script>
+        function Proses(sel) {
+          var input = document.getElementById("finput").value;
+          var output="";
+          var output2="";
+          if(input>= 1 && input<=20){
+              for(i=0;i<input-1;i++){
+                  output+=i+1;
+                  output+=" ";
+              }
+              output+=" hop! ";
+          
+              for(i=0;i<input;i++){
+                  output2+=output;
+              }
+              document.getElementById("foutput").innerHTML="Hasil = "+ output2;
+          }else{
+              document.getElementById("foutput").innerHTML="Hasil = Input kurang dari 1 atau lebih dari 20";
+          }
+        }   
+</script>
