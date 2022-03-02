@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using LatihanSoal.Helpers;
+using LatihanSoal.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace LatihanSoal.Controllers
 {
@@ -20,23 +24,33 @@ namespace LatihanSoal.Controllers
         // GET: Pelanggan/Create
         public ActionResult Create()
         {
-            return View();
+            var Model = new Pelanggan();
+
+            return PartialView("Create",Model);
         }
 
-        // POST: Pelanggan/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Save(Pelanggan Model)
         {
-            try
+
+            using (var httpClient = new HttpClient())
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
+                var endpoint = String.Format("{0}/{1}", "https://localhost:7038/", "api/Pelanggan/Create");
+                StringContent content = new StringContent(JsonConvert.SerializeObject(Model), Encoding.UTF8, "application/json");
+                httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("bearer {0}", ""));
+
+                var response = await APICaller<ResponseAPI<Pelanggan>>.Execute(content, "POST", endpoint, Request);
+                if (response.isSucceed)
+                {
+                    return Json(response);
+                }
+                else
+                {
+                    return Json(response);
+                }
             }
         }
+
 
         // GET: Pelanggan/Edit/5
         public ActionResult Edit(int id)

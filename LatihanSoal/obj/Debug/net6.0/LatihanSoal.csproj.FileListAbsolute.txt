@@ -230,3 +230,4 @@ C:\latihan\LatihanSoal\LatihanSoal\bin\Debug\net6.0\LatihanSoal.runtimeconfig.js
 C:\latihan\LatihanSoal\LatihanSoal\bin\Debug\net6.0\ref\LatihanSoal.dll
 C:\latihan\LatihanSoal\LatihanSoal\bin\Debug\net6.0\LatihanSoal.pdb
 C:\latihan\LatihanSoal\LatihanSoal\obj\Debug\net6.0\LatihanSoal.genruntimeconfig.cache
+C:\latihan\LatihanSoal\LatihanSoal\bin\Debug\net6.0\System.Net.Http.Formatting.dll

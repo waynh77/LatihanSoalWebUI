@@ -10,4 +10,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\..\..\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Xamarin.VisualStudio\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

@@ -7,6 +7,9 @@
 <h3>Product</h3>
 <div class="content">
     <div class="card">
+            <div class="d-flex justify-content-left">
+                <a href="#" class="btn btn-primary btn-labeled btn-labeled-right" id="BtnCreate"><b><i class="icon-plus2"></i></b>Add New</a>
+            </div><br />
         <table class="table datatable-scroll-y" role="grid" id="myTable" width="100%">
             <thead style="background: #0098D7; color: #ffffff; ">
                 <tr>
@@ -15,7 +18,7 @@
                     <th>Nama</th>
                     <th>Harga</th>
                     <th>Deskripsi</th>
-                    @*<th>Action</th>*@
+                    <th>Action</th>
                 </tr>
             </thead>
         </table>
@@ -33,10 +36,10 @@
 
              
 $(document).ready(function() {
-    
+    var Product = (function (Product) {
  $('#myTable').DataTable( {
         processing: true,
-        serverSide: true,
+        serverSide: false,
         ajax:{
             url:"https://localhost:7038/api/Product",
             type:'GET',
@@ -58,7 +61,16 @@ $(document).ready(function() {
             { "data": "id" },
             { "data": "nama" },
             { "data": "harga" },
-            { "data": "deskripsi" }
+            { "data": "deskripsi" },
+            {
+                "render": function (data, type, full, meta) {
+                    var result = "<a href=\"javascript:;\" onClick='DetailPopUp(event," + full.Id + ")' class='btn btn-secondary'>Detail</a>";
+                        result = result + " <a href=\"javascript:;\" onClick='EditPopUp(event," + full.Id + ")' class='btn btn-warning'>Edit</a>";
+                        result = result + " <a href=\"javascript:;\" onClick='DeletePopUp(event," + full.Id + ")' class='btn btn-danger'>Delete</a>";
+
+                    return result;
+                }
+            }
         ],
         rowCallback: function (row, data, index) {
             var start = this.api().page.info().start;
@@ -68,7 +80,45 @@ $(document).ready(function() {
 
     } );
 
+    Product.windowOptions = {
+        modal: true,
+        resizable: false,
+        pinned: true,
+        position: { top: 100 },
+        width: "80%",
+        maxHeight: $(window).height() * 9 / 10,
+        visible: false,
+        refresh: function () { this.center(); },
+        open: adjustSize,
+        animation: {
+            open: { effects: "slideIn:down fadeIn", duration: 350 },
+            close: { effects: "slideIn:up fadeIn", reverse: true, duration: 200 }
+        }, close: function () { $(this.element).empty() }
+    };
+
+    Product.CreatePopUp = function (e) {
+        e.preventDefault();
+
+        $(".k-window-title").html("Create TLE");
+        $("#CreateEditWindow")
+            .data("kendoWindow")
+            .refresh({
+                url: "/TLE/Create/"
+            })
+            .center()
+            .open();
+    };
+
+    return Product
+})(Product || {});
 } );
 
+document.addEventListener('DOMContentLoaded', function () {
+    $("#CreateWindow").kendoWindow(Product.windowOptions);
+    $("#DetailWindow").kendoWindow(Product.windowOptions);
+    $("#DeleteWindow").kendoWindow(Product.windowOptions);
+    $("#EditWindow").kendoWindow(Product.windowOptions);
+    $("#BtnCreate").click(Product.CreatePopUp);
+});
 </script>
 }
