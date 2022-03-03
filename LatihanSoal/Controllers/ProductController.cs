@@ -56,7 +56,7 @@ namespace LatihanSoal.Controllers
         {
             Product produk = new Product { Id = id };
             return PartialView("Edit", produk);
-        }
+        } 
 
 
         // GET: ProductController/Delete/5

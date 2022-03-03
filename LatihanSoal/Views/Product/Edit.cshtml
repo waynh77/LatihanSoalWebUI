@@ -50,31 +50,47 @@
             var url = "@Url.Action("Save")";
             var formData = new FormData(this);
 
-            //custom.showLoading();
-
-            $.ajax({
-                url: url,
-                enctype: 'multipart/form-data',
-                type: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (result) {
-                    if (result.isSucceed) {
-                        $("#EditWindow").data("kendoWindow").close();
-                        swal("Success", result.message, {
-                            icon: "success"
-                        }).then(function() {
-                            window.location.reload();
-                        });
+            var Nama = document.getElementById("Nama").value;
+            var Harga = document.getElementById("Harga").value;
+                        
+            if(Nama.length>0 && Harga>0){
+                $.ajax({
+                    url: url,
+                    enctype: 'multipart/form-data',
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                        if (result.isSucceed) {
+                            $("#EditWindow").data("kendoWindow").close();
+                            swal("Success", result.message, {
+                                icon: "success"
+                            }).then(function() {
+                                window.location.reload();
+                            });
+                        }
+                        else {
+                            swal("Something Wrong", result.message, {
+                                icon: "error"
+                            });
+                        }
                     }
-                    else {
-                        swal("Something Wrong", result.message, {
-                            icon: "error"
-                        });
-                    }
+                });
+            
+            }else{
+                var pesan="";
+                if(Nama.length==0){
+                    pesan+="Nama masih kosong, ";
                 }
-            });
+                if(Harga==0){
+                    pesan+="Harga masih kosong, ";
+                }
+                swal("Data belum lengkap", pesan, {
+                    icon: "error"
+                });
+
+            }
         };
 
         return Product;

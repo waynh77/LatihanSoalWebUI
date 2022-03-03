@@ -50,40 +50,51 @@
             var Nama = document.getElementById("Nama").value;
             var Harga = document.getElementById("Harga").value;
             var Deskripsi = document.getElementById("Deskripsi").value;
-            var url = "@Url.Action("Save")";
-            var formData = new FormData();
-            formData.append("Nama", Nama)
-            formData.append("Harga", Harga)
-            formData.append("Deskripsi", Deskripsi)
+                        
+            if(Nama.length>0 && Harga>0){
+                var url = "@Url.Action("Save")";
+                var formData = new FormData();
+                formData.append("Nama", Nama)
+                formData.append("Harga", Harga)
+                formData.append("Deskripsi", Deskripsi)
 
-            //custom.showLoading();
-
-            $.ajax({
-                url: url,
-                enctype: 'multipart/form-data',
-                type: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (result) {
-                    if (result.isSucceed) {
-                        $("#CreateWindow").data("kendoWindow").close();
-                        //custom.hideLoading();
-                        swal("Success", result.message, {
-                            icon: "success"
-                        }).then(function() {
-                            window.location.reload();
-                        });
-                        //Product.table.ajax.reload();
+                $.ajax({
+                    url: url,
+                    enctype: 'multipart/form-data',
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                        if (result.isSucceed) {
+                            $("#CreateWindow").data("kendoWindow").close();
+                            swal("Success", result.message, {
+                                icon: "success"
+                            }).then(function() {
+                                window.location.reload();
+                            });
+                        }
+                        else {
+                            swal("Something Wrong", result.message, {
+                                icon: "error"
+                            });
+                        }
                     }
-                    else {
-                        //custom.hideLoading();
-                        swal("Something Wrong", result.message, {
-                            icon: "error"
-                        });
-                    }
+                });            
+            }else{
+                var pesan="";
+                if(Nama.length==0){
+                    pesan+="Nama masih kosong, ";
                 }
-            });
+                if(Harga==0){
+                    pesan+="Harga masih kosong, ";
+                }
+                swal("Data belum lengkap", pesan, {
+                    icon: "error"
+                });
+
+            }
+
         };
 
         return Product;

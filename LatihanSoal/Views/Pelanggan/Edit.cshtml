@@ -47,34 +47,54 @@
 
         Pelanggan.submit = function (e) {
             e.preventDefault();
-            var url = "@Url.Action("Save")";
-            var formData = new FormData(this);
+            var Nama = document.getElementById("Nama").value;
+            var Alamat = document.getElementById("Alamat").value;
+            var NoTelp = document.getElementById("NoTelp").value;
+                        
+            if(Nama.length>0 && Alamat.length>0 && NoTelp.length>0){
+                var url = "@Url.Action("Save")";
+                var formData = new FormData(this);
 
-            //custom.showLoading();
-
-            $.ajax({
-                url: url,
-                enctype: 'multipart/form-data',
-                type: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (result) {
-                    if (result.isSucceed) {
-                        $("#EditWindow").data("kendoWindow").close();
-                        swal("Success", result.message, {
-                            icon: "success"
-                        }).then(function() {
-                            window.location.reload();
-                        });
+                $.ajax({
+                    url: url,
+                    enctype: 'multipart/form-data',
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                        if (result.isSucceed) {
+                            $("#EditWindow").data("kendoWindow").close();
+                            swal("Success", result.message, {
+                                icon: "success"
+                            }).then(function() {
+                                window.location.reload();
+                            });
+                        }
+                        else {
+                            swal("Something Wrong", result.message, {
+                                icon: "error"
+                            });
+                        }
                     }
-                    else {
-                        swal("Something Wrong", result.message, {
-                            icon: "error"
-                        });
-                    }
+                });            
+            }else{
+                var pesan="";
+                if(Nama.length==0){
+                    pesan+="Nama masih kosong, ";
                 }
-            });
+                if(Alamat.length==0){
+                    pesan+="Alamat masih kosong, ";
+                }
+                if(NoTelp.length==0){
+                    pesan+=" Nomor Telp masih kosong";
+                }
+                swal("Data belum lengkap", pesan, {
+                    icon: "error"
+                });
+
+            }
+
         };
 
         return Pelanggan;
