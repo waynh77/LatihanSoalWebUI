@@ -61,39 +61,32 @@ namespace LatihanSoal.Controllers
             return PartialView("Edit", pelanggan);
         }
 
-        // POST: Pelanggan/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: Pelanggan/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Pelanggan pelanggan = new Pelanggan { Id = id };
+            return PartialView("Delete", pelanggan);
         }
 
-        // POST: Pelanggan/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Hapus(Pelanggan Model)
         {
-            try
+            using (var httpClient = new HttpClient())
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
+                var endpoint = String.Format("{0}/{1}", "https://localhost:7038", "api/Pelanggan/Delete");
+                StringContent content = new StringContent(JsonConvert.SerializeObject(Model), Encoding.UTF8, "application/json");
+                httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("bearer {0}", ""));
+
+                var response = await APICaller<ResponseAPI<Pelanggan>>.Execute(content, "POST", endpoint, Request);
+                if (response.isSucceed)
+                {
+                    return Json(response);
+                }
+                else
+                {
+                    return Json(response);
+                }
             }
         }
     }

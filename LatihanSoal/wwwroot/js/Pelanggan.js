@@ -39,7 +39,7 @@
                 "render": function (data, type, full, meta) {
                     var result = "<a href=\"javascript:;\" onClick='Pelanggan.DetailPopUp(event," + full.id + ")' class='btn btn-secondary'>Detail</a>";
                     result = result + " <a href=\"javascript:;\" onClick='Pelanggan.EditPopUp(event," + full.id + ")' class='btn btn-warning'>Edit</a>";
-                    result = result + " <a href=\"javascript:;\" onClick='Pelanggan.DeletePopUp(event," + full.id + ")' class='btn btn-danger'>Delete</a>";
+                    result = result + " <a href=\"javascript:;\" onClick='Pelanggan.HapusPopUp(event," + full.id + ")' class='btn btn-danger'>Delete</a>";
 
                     return result;
                 }
@@ -118,6 +118,19 @@
             .data("kendoWindow")
             .refresh({
                 url: "/Pelanggan/Edit/",
+                data: { Id: Id }
+            })
+            .center()
+            .open();
+    };
+
+    Pelanggan.HapusPopUp = function (e, Id) {
+        e.preventDefault();
+        $(".k-window-title").html("Delete Pelanggan");
+        $("#DeleteWindow")
+            .data("kendoWindow")
+            .refresh({
+                url: "/Pelanggan/Delete/",
                 data: { Id: Id }
             })
             .center()

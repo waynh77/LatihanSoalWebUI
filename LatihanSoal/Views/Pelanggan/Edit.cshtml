@@ -62,16 +62,13 @@
                 success: function (result) {
                     if (result.isSucceed) {
                         $("#EditWindow").data("kendoWindow").close();
-                        //custom.hideLoading();
                         swal("Success", result.message, {
                             icon: "success"
                         }).then(function() {
                             window.location.reload();
                         });
-                        //Pelanggan.table.ajax.reload();
                     }
                     else {
-                        //custom.hideLoading();
                         swal("Something Wrong", result.message, {
                             icon: "error"
                         });
