@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sfD+7jgfFgCoOZDpcqAhlwKLYC+qSAXNvqr5hQdG+ZE=",
+  "Hash": "yqzo6B0xJJRc5F+ySkBWTiw9GlXu2d4tuvnFyeH9PdU=",
   "Source": "LatihanSoal",
   "BasePath": "_content/LatihanSoal",
   "Mode": "Default",
@@ -134,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Pelanggan.js"
+    },
+    {
+      "Identity": "C:\\latihan\\LatihanSoal\\LatihanSoal\\wwwroot\\js\\Product.js",
+      "SourceId": "LatihanSoal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\latihan\\LatihanSoal\\LatihanSoal\\wwwroot\\",
+      "BasePath": "_content/LatihanSoal",
+      "RelativePath": "js/Product.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Product.js"
     },
     {
       "Identity": "C:\\latihan\\LatihanSoal\\LatihanSoal\\wwwroot\\js\\site.js",

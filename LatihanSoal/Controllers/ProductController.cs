@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using LatihanSoal.Helpers;
+using LatihanSoal.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace LatihanSoal.Controllers
 {
@@ -14,69 +18,72 @@ namespace LatihanSoal.Controllers
         // GET: ProductController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Product produk = new Product { Id = id };
+            return PartialView("Details", produk);
         }
 
         // GET: ProductController/Create
         public ActionResult Create()
         {
-            return View();
+            var Model = new Product();
+
+            return PartialView("Create", Model);
         }
 
-        // POST: ProductController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Save(Product Model)
         {
-            try
+
+            using (var httpClient = new HttpClient())
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
+                var endpoint = String.Format("{0}/{1}", "https://localhost:7038", "api/Product/save");
+                StringContent content = new StringContent(JsonConvert.SerializeObject(Model), Encoding.UTF8, "application/json");
+                httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("bearer {0}", ""));
+
+                var response = await APICaller<ResponseAPI<Product>>.Execute(content, "POST", endpoint, Request);
+                if (response.isSucceed)
+                {
+                    return Json(response);
+                }
+                else
+                {
+                    return Json(response);
+                }
             }
         }
-
         // GET: ProductController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Product produk = new Product { Id = id };
+            return PartialView("Edit", produk);
         }
 
-        // POST: ProductController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: ProductController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Product produk = new Product { Id = id };
+            return PartialView("Delete", produk);
         }
 
-        // POST: ProductController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Hapus(Product Model)
         {
-            try
+            using (var httpClient = new HttpClient())
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
+                var endpoint = String.Format("{0}/{1}", "https://localhost:7038", "api/Product/Delete");
+                StringContent content = new StringContent(JsonConvert.SerializeObject(Model), Encoding.UTF8, "application/json");
+                httpClient.DefaultRequestHeaders.Add("Authorization", String.Format("bearer {0}", ""));
+
+                var response = await APICaller<ResponseAPI<Product>>.Execute(content, "POST", endpoint, Request);
+                if (response.isSucceed)
+                {
+                    return Json(response);
+                }
+                else
+                {
+                    return Json(response);
+                }
             }
         }
     }

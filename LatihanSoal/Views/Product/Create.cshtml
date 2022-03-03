@@ -1,5 +1,96 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model LatihanSoal.Models.Product
+
+<div class="card">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FormProduct", name = "FormProduct", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.AntiForgeryToken()
+    <div class="content">
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Nama Product</label>
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.Nama, new { @class = "form-control", data_val = "true", placeholder = "Name" })
+                @Html.ValidationMessageFor(m => m.Nama)
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Harga</label>
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.Harga, new { @class = "form-control", data_val = "true", placeholder = "Harga",type="number" })
+                @Html.ValidationMessageFor(m => m.Harga)
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Nomor Telepon</label>
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.Deskripsi, new { @class = "form-control", data_val = "true", placeholder = "Deskripsi" })
+                @Html.ValidationMessageFor(m => m.Deskripsi)
+            </div>
+        </div>
+
+        <div class="card-footer text-right">
+            <button type="submit" class="btn btn-primary btn-labeled btn-labeled-right" id="BtnSubmit"><b><i class="icon-paperplane"></i></b>Submit</button>
+            <a href="#" class="btn btn-danger" id="BtnCancel">Cancel</a>
+        </div>
+    </div>
 }
+</div>
+
+
+
+<script>
+    var Product = (function (Product) {
+
+        Product.closeWindow = function () {
+            $("#CreateWindow").data("kendoWindow").close();
+        };
+
+        Product.submit = function (e) {
+            e.preventDefault();
+            var Nama = document.getElementById("Nama").value;
+            var Harga = document.getElementById("Harga").value;
+            var Deskripsi = document.getElementById("Deskripsi").value;
+            var url = "@Url.Action("Save")";
+            var formData = new FormData();
+            formData.append("Nama", Nama)
+            formData.append("Harga", Harga)
+            formData.append("Deskripsi", Deskripsi)
+
+            //custom.showLoading();
+
+            $.ajax({
+                url: url,
+                enctype: 'multipart/form-data',
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    if (result.isSucceed) {
+                        $("#CreateWindow").data("kendoWindow").close();
+                        //custom.hideLoading();
+                        swal("Success", result.message, {
+                            icon: "success"
+                        }).then(function() {
+                            window.location.reload();
+                        });
+                        //Product.table.ajax.reload();
+                    }
+                    else {
+                        //custom.hideLoading();
+                        swal("Something Wrong", result.message, {
+                            icon: "error"
+                        });
+                    }
+                }
+            });
+        };
+
+        return Product;
+    })(Product || {});
+
+    $(function () {
+        $("#FormProduct").submit(Product.submit);
+        $("#BtnCancel").click(Product.closeWindow);
+    });
+</script>

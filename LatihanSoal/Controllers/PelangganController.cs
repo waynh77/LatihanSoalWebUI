@@ -68,7 +68,7 @@ namespace LatihanSoal.Controllers
             Pelanggan pelanggan = new Pelanggan { Id = id };
             return PartialView("Delete", pelanggan);
         }
-
+         
         [HttpPost]
         public async Task<IActionResult> Hapus(Pelanggan Model)
         {

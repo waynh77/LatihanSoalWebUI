@@ -1,5 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model LatihanSoal.Models.Product
+
+<div class="card">
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FormProduct", name = "FormProduct", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Id)
+    <div class="content">
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Nama Product</label>
+            <div class="col-lg-8">
+                <label id="nama"></label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Harga</label>
+            <div class="col-lg-8">
+                <label id="Harga"></label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Deskripsi</label>
+            <div class="col-lg-8">
+                <label id="deskripsi"></label>
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <a href="#" class="btn btn-danger" id="BtnClose">Close</a>
+        </div>
+    </div>
 }
+</div>
+
+
+<script>
+    var Product = (function (Product) {
+
+        Product.closeWindow = function () {
+            $("#DetailWindow").data("kendoWindow").close();
+        };
+
+        return Product;
+    })(Product || {});
+
+    $(function () {
+        $.getJSON('https://localhost:7038/api/Product/'+@Model.Id, function(data) {
+            document.getElementById("nama").innerHTML = data.nama;
+            document.getElementById("Harga").innerHTML = data.harga;
+            document.getElementById("deskripsi").innerHTML = data.deskripsi;
+        });
+
+        $(function () {
+            $("#BtnClose").click(Product.closeWindow);
+        });
+
+    });
+</script>

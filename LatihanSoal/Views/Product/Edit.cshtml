@@ -1,5 +1,95 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model LatihanSoal.Models.Product
+
+<div class="card">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FormProduct", name = "FormProduct", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.AntiForgeryToken()
+    <div class="content">
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Nama Product</label>
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.Nama, new { @class = "form-control", id = "Nama", data_val = "true", placeholder = "Nama Product" })
+                @Html.ValidationMessageFor(m => m.Nama)
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Harga</label>
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.Harga, new { @class = "form-control", id = "Harga", data_val = "true", placeholder = "Harga", type="number" })
+                @Html.ValidationMessageFor(m => m.Harga)
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Nomor Telepon</label>
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.Deskripsi, new { @class = "form-control", id = "Deskripsi", data_val = "true", placeholder = "Deskripsi" })
+                @Html.ValidationMessageFor(m => m.Deskripsi)
+            </div>
+        </div>
+
+        <div class="card-footer text-right">
+            <button type="submit" class="btn btn-primary btn-labeled btn-labeled-right" id="BtnSubmit"><b><i class="icon-paperplane"></i></b>Submit</button>
+            <a href="#" class="btn btn-danger" id="BtnCancel">Cancel</a>
+        </div>
+    </div>
 }
+</div>
+
+
+
+<script>
+    var Product = (function (Product) {
+
+        Product.closeWindow = function () {
+            $("#EditWindow").data("kendoWindow").close();
+        };
+
+        Product.submit = function (e) {
+            e.preventDefault();
+            var url = "@Url.Action("Save")";
+            var formData = new FormData(this);
+
+            //custom.showLoading();
+
+            $.ajax({
+                url: url,
+                enctype: 'multipart/form-data',
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    if (result.isSucceed) {
+                        $("#EditWindow").data("kendoWindow").close();
+                        swal("Success", result.message, {
+                            icon: "success"
+                        }).then(function() {
+                            window.location.reload();
+                        });
+                    }
+                    else {
+                        swal("Something Wrong", result.message, {
+                            icon: "error"
+                        });
+                    }
+                }
+            });
+        };
+
+        return Product;
+    })(Product || {});
+
+    $(function () {
+        $("#FormProduct").submit(Product.submit);
+        $("#BtnCancel").click(Product.closeWindow);
+
+        $.getJSON('https://localhost:7038/api/Product/'+@Model.Id, function(data) {
+            
+            document.getElementById("Nama").value = data.nama;
+            document.getElementById("Harga").value = data.harga;
+            document.getElementById("Deskripsi").value = data.deskripsi;
+        });
+
+    });
+</script>
