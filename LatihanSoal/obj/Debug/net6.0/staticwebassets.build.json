@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yqzo6B0xJJRc5F+ySkBWTiw9GlXu2d4tuvnFyeH9PdU=",
+  "Hash": "/eh+o3jWDpSMKQ1jCtEzHsTJJYFpTjZM8k0nos0xxoI=",
   "Source": "LatihanSoal",
   "BasePath": "_content/LatihanSoal",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\latihan\\LatihanSoal\\LatihanSoal\\wwwroot\\js\\Transaksi.js",
+      "SourceId": "LatihanSoal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\latihan\\LatihanSoal\\LatihanSoal\\wwwroot\\",
+      "BasePath": "_content/LatihanSoal",
+      "RelativePath": "js/Transaksi.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Transaksi.js"
     },
     {
       "Identity": "C:\\latihan\\LatihanSoal\\LatihanSoal\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

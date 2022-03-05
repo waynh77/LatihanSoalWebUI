@@ -1,0 +1,115 @@
+﻿@model LatihanSoal.Models.Transaksi
+
+<div class="card">
+    <h4>Detail Transaksi</h4>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FormTransaksiDetail", name = "FormTransaksiDetail", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.Id)
+    <div class="content">
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Kode Transaksi</label>
+            <div class="col-lg-8">
+                <label id="kodetransaksi"></label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Tanggal</label>
+            <div class="col-lg-8">
+                <label id="tanggal"></label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">Pelanggan</label>
+            <div class="col-lg-8">
+                <label id="pelanggan"></label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-lg-4">No Telp</label>
+            <div class="col-lg-8">
+                <label id="notelp"></label>
+            </div>
+        </div>
+    <table class="table datatable-scroll-y" role="grid" id="myTable1" width="100%">
+            <thead style="background: #0098D7; color: #ffffff; ">
+                <tr>
+                    <th>No</th>
+                    <th>Nama Produk</th>
+                    <th>Harga Satuan</th>
+                    <th>Jumlah</th>
+                    <th>Sub Total</th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="form-group row">
+        </div>
+        <div class="card-footer text-right">
+            <a href="#" class="btn btn-danger" id="BtnClose">Close</a>
+        </div>
+    </div>
+
+}
+</div>
+
+
+<script>
+    var Id=@Model.Id;
+
+    $(document).ready(function() {
+        
+
+} );
+
+    var TransaksiDetail = (function (TransaksiDetail) {
+
+        
+        TransaksiDetail.closeWindow = function () {
+            $("#DetailWindow").data("kendoWindow").close();
+        };
+
+
+
+        return TransaksiDetail;
+    })(TransaksiDetail || {});
+
+    $(function () {
+        $.getJSON('https://localhost:7038/api/Transaksi/'+Id, function(data) {
+            document.getElementById("kodetransaksi").innerHTML = data[0].kodeTransaksi;
+            document.getElementById("tanggal").innerHTML = data[0].tanggal;
+            document.getElementById("pelanggan").innerHTML = data[0].pelanggan.nama;
+            document.getElementById("notelp").innerHTML = data[0].pelanggan.noTelp;
+            //alert(JSON.stringify(data[0].transaksiDetail));
+                $('#myTable1').DataTable( {
+                    data: data[0].transaksiDetail,
+                    columns: [
+                    { data: null },
+                    { "data": "produk.nama" },
+                    { "data": "produk.harga" },
+                    { "data": "jumlah" },
+                    {
+                        "render": function (data, type, full, meta) {
+                            var result = full.produk.harga * full.jumlah;
+
+                            return result;
+                        }
+                    }
+                    ],
+                    rowCallback: function (row, data, index) {
+                    var start = this.api().page.info().start;
+
+                    $('td:eq(0)', row).html(start + index + 1);
+                }
+    } );
+
+        });
+
+        $(function () {
+            $("#BtnClose").click(TransaksiDetail.closeWindow);
+        });
+
+        $(function(){
+            
+        });
+    });
+</script>

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Transaksi";
+}
+
+<h3>Transaksi</h3>
+
+<div class="content">
+    <div class="card">
+        <table class="table datatable-scroll-y" role="grid" id="myTable" width="100%">
+            <thead style="background: #0098D7; color: #ffffff; ">
+                <tr>
+                    <th>No</th>
+                    <th>Id</th>
+                    <th>Kode Transaksi</th>
+                    <th>Tanggal</th>
+                    <th>Pelanggan</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div id="DetailWindow"></div>
+
+@section Scripts
+{
+<script src="~/js/Transaksi.js"></script>
+
+}
