@@ -79,7 +79,7 @@
     Product.CreatePopUp = function (e) {
         e.preventDefault();
 
-        $(".k-window-title").html("Create Product");
+        $(".k-window-title").html("");
         $("#CreateWindow")
             .data("kendoWindow")
             .refresh({
@@ -100,7 +100,7 @@
 
     Product.DetailPopUp = function (e, Id) {
         e.preventDefault();
-        $(".k-window-title").html("Detail Product");
+        $(".k-window-title").html("");
         $("#DetailWindow")
             .data("kendoWindow")
             .refresh({
@@ -113,7 +113,7 @@
 
     Product.EditPopUp = function (e, Id) {
         e.preventDefault();
-        $(".k-window-title").html("Edit Product");
+        $(".k-window-title").html("");
         $("#EditWindow")
             .data("kendoWindow")
             .refresh({
@@ -126,7 +126,7 @@
 
     Product.HapusPopUp = function (e, Id) {
         e.preventDefault();
-        $(".k-window-title").html("Delete Product");
+        $(".k-window-title").html("");
         $("#DeleteWindow")
             .data("kendoWindow")
             .refresh({

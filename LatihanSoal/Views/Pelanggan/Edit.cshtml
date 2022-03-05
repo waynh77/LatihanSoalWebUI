@@ -1,6 +1,8 @@
 ﻿@model LatihanSoal.Models.Pelanggan
 
 <div class="card">
+            <h4>Edit Pelanggan</h4>
+
         @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FormPelanggan", name = "FormPelanggan", enctype = "multipart/form-data" }))
 {
     @Html.HiddenFor(m => m.Id)

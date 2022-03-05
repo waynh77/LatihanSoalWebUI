@@ -79,7 +79,7 @@
     Pelanggan.CreatePopUp = function (e) {
         e.preventDefault();
 
-        $(".k-window-title").html("Create Pelanggan");
+        $(".k-window-title").html("");
         $("#CreateWindow")
             .data("kendoWindow")
             .refresh({
@@ -100,7 +100,7 @@
 
     Pelanggan.DetailPopUp = function (e, Id) {
         e.preventDefault();
-        $(".k-window-title").html("Detail Pelanggan");
+        $(".k-window-title").html("");
         $("#DetailWindow")
             .data("kendoWindow")
             .refresh({
@@ -113,7 +113,7 @@
 
     Pelanggan.EditPopUp = function (e, Id) {
         e.preventDefault();
-        $(".k-window-title").html("Edit Pelanggan");
+        $(".k-window-title").html("");
         $("#EditWindow")
             .data("kendoWindow")
             .refresh({
@@ -126,7 +126,7 @@
 
     Pelanggan.HapusPopUp = function (e, Id) {
         e.preventDefault();
-        $(".k-window-title").html("Delete Pelanggan");
+        $(".k-window-title").html("");
         $("#DeleteWindow")
             .data("kendoWindow")
             .refresh({

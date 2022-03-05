@@ -22,10 +22,13 @@
               input=input.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'');
               arr=input;
               for(i=0;i<input.length;i++){
-                  tempchar=input[i];
+                  tempchar=input[i];                  
                   output=0;
                   for(j=0;j<arr.length;j++){
-                      output=1;
+                      //alert(tempchar+" "+arr[j])
+                      if(tempchar==arr[j]){
+                          output=1;
+                      }
                   }
                   arr=arr.replaceAll(tempchar,'');
                   jmlchar+=output;

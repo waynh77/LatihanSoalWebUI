@@ -1,6 +1,7 @@
 ﻿@model LatihanSoal.Models.Product
 
 <div class="card">
+    <h4>Create Product</h4>
         @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FormProduct", name = "FormProduct", enctype = "multipart/form-data" }))
 {
     @Html.HiddenFor(m => m.Id)
