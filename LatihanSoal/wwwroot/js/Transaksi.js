@@ -64,7 +64,7 @@
         modal: true,
         resizable: false,
         pinned: true,
-        position: { top: 100 },
+        position: { top: 0 },
         width: "700px",
         maxHeight: $(window).height() * 9 / 10,
         visible: false,
@@ -82,7 +82,7 @@
     };
 
     Transaksi.closeWindow = function () {
-        $("#CreateWindow").data("kendoWindow").close();
+        $("#DetailWindow").data("kendoWindow").close();
     };
 
     Transaksi.DetailPopUp = function (e, Id) {

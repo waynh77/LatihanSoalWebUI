@@ -8,89 +8,89 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LatihanSoal
 build_property.RootNamespace = LatihanSoal
-build_property.ProjectDir = C:\latihan\LatihanSoal\LatihanSoal\
+build_property.ProjectDir = F:\Latihan\LatihanSoal\LatihanSoal\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\latihan\LatihanSoal\LatihanSoal
+build_property.MSBuildProjectDirectory = F:\Latihan\LatihanSoal\LatihanSoal
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Bag1/Index.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Bag1/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFnMVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Bag1/soal1B.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Bag1/soal1B.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFnMVxzb2FsMUIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Bag1/soal1C.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Bag1/soal1C.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFnMVxzb2FsMUMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Pelanggan/Create.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Pelanggan/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVsYW5nZ2FuXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Pelanggan/Delete.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Pelanggan/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVsYW5nZ2FuXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Pelanggan/Detail.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Pelanggan/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVsYW5nZ2FuXERldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Pelanggan/Edit.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Pelanggan/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVsYW5nZ2FuXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Pelanggan/Index.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Pelanggan/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVsYW5nZ2FuXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Product/Create.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Product/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Product/Delete.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Product/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Product/Details.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Product/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Product/Edit.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Product/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Product/Index.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Shared/Error.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Shared/_ValidationScriptsPartial.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Transaksi/Details.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Transaksi/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNha3NpXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Transaksi/Index.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Transaksi/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNha3NpXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/_ViewImports.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/_ViewStart.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/latihan/LatihanSoal/LatihanSoal/Views/Shared/_Layout.cshtml]
+[F:/Latihan/LatihanSoal/LatihanSoal/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-06ebfrj25i

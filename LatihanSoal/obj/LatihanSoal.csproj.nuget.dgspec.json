@@ -1,28 +1,38 @@
 {
   "format": 1,
   "restore": {
-    "C:\\latihan\\LatihanSoal\\LatihanSoal\\LatihanSoal.csproj": {}
+    "F:\\Latihan\\LatihanSoal\\LatihanSoal\\LatihanSoal.csproj": {}
   },
   "projects": {
-    "C:\\latihan\\LatihanSoal\\LatihanSoal\\LatihanSoal.csproj": {
+    "F:\\Latihan\\LatihanSoal\\LatihanSoal\\LatihanSoal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\latihan\\LatihanSoal\\LatihanSoal\\LatihanSoal.csproj",
+        "projectUniqueName": "F:\\Latihan\\LatihanSoal\\LatihanSoal\\LatihanSoal.csproj",
         "projectName": "LatihanSoal",
-        "projectPath": "C:\\latihan\\LatihanSoal\\LatihanSoal\\LatihanSoal.csproj",
-        "packagesPath": "C:\\Users\\Wahyu\\.nuget\\packages\\",
-        "outputPath": "C:\\latihan\\LatihanSoal\\LatihanSoal\\obj\\",
+        "projectPath": "F:\\Latihan\\LatihanSoal\\LatihanSoal\\LatihanSoal.csproj",
+        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+        "outputPath": "F:\\Latihan\\LatihanSoal\\LatihanSoal\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Wahyu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\DevExpress 18.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itbinus/_packaging/Binus.WS.Pattern/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -40,6 +50,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.2, )"
@@ -63,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
